@@ -1,0 +1,128 @@
+* Definizione
+** Formula
+\[
+X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}
+\]
+con $z$ variabile complessa
+
+** Rapporto con Fourier
+prendiamo la definizione di trasformata z e la definizione di Fourier
+per sequenze
+
+\begin{align*}
+&X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n} \\
+&\overline{X}(F) = \sum_{n=-\infty}^{\infty} x[n] e^{-j2\pi Fn} \\
+\end{align*}
+
+le due formule sono abbastanza simili, entrambe hanno $\sum x[n]\
+qualcosa^{-n}$, nel caso di Fourier questo qualcosa = $e^{j2\pi F}$,
+nel caso della z questo può essere qualsiasi cosa, vediamo allora il
+caso particolare in cui z ha la forma $e^{j2\pi F}$.
+
+\begin{align*}
+  &X(z) \rvert _{z = e^{j2\pi F}} \\
+= &(\sum_{n=-\infty}^{\infty} x[n] z^{-n})\rvert _{z = e^{j2\pi F}} \\
+= & \sum_{n=-\infty}^{\infty} x[n] (e^{j2\pi F})^{-n} \\
+= & \sum_{n=-\infty}^{\infty} x[n] e^{-j2\pi Fn} \\
+= & \overline{X}(F)
+\end{align*}
+
+quindi $X(z) \rvert _{z = e^{j2\pi F}}$ = $\overline{X}(F)$, vale a
+dire, la trasformata z equivale alla trasformata di Fourier per
+sequenze nei punti della forma $z = e^{j2\pi F}$, se lo riscriviamo
+come $z = 1 \times e^{j2\pi F}$ si può notare un po' meglio che questa
+è una forma generica per indicare punti con modulo 1 e fase
+arbitraria, in umanese vuol dire che è un punto sul cerchio unitario.
+(se $F$ arbitrario $\in (-\frac{1}{2},\frac{1}{2})$ allora $2\pi F$
+arbitrario $\in (-\pi$ e $\pi$))
+
+* Esempii
+
+** Sequenza finita
+** Monolatera destra
+si prenda la sequenza
+\[
+x[n] = 2^n u[n]
+\]
+allora
+\begin{align*}
+& X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n} \\
+& X(z) = \sum_{n=-\infty}^{\infty} x[n] = 2^n u[n] z^{-n} \\
+\end{align*}
+
+per il gradino
+\begin{align*}
+& X(z) = \sum_{n=0}^{\infty} x[n] = 2^n z^{-n} \\
+& X(z) = \sum_{n=0}^{\infty} x[n] = (2z^{-1})^{-1} \\
+\end{align*}
+
+essendo questa diventata una serie geometrica, si ricordi intanto che
+\[
+f(q) = \sum_{n=0}^{\infty} q^n \Rightarrow
+f(q) = \begin{cases}
+\frac{1}{1-q} & \text{se } \lvert q \rvert < 0 \\
+\text{non converge} & \text{se } \lvert q \rvert \geq 0
+\end{cases}
+\]
+
+** Monolatera sinistra
+
+** Importanza della RoC
+* Teoremi
+** Linearità
+
+** Ritardo
+
+** Inversione temporale
+
+** Derivazione in z
+
+L'ipotesi è che
+
+\begin{align*}
+&x[n] \iff X(z) \\
+&n x[n] \iff -z \frac{dX(z)}{dz}
+\end{align*}
+
+la dimostrazione è che se
+\[
+X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}
+\]
+
+allora facendo la derivata a entrabmi i lati ottieni
+\[
+\frac{dX(z)}{dz} = \frac{d}{dz}(\sum_{n=-\infty}^{\infty} x[n] z^{-n})
+\]
+
+sia la derivata che la sommatoria sono lineari, quindi puoi fare
+\[
+\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} \frac{d}{dz}(x[n] z^{-n})
+\]
+
+$x[n] non dipende da $z$, quindi si porta fuori dalla derivata e
+\begin{align*}
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} \frac{d}{dz}(x[n] z^{-n}) \\
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] \frac{dz^{-n}}{dz} \\
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] -n z^{-n-1} \\
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] -n z^{-n} z^{-1}
+\end{align*}
+
+$z^{-1}$ non dipende da n quindi lo portiamo fuori insieme al segno
+$-$ del $-n$ introdotto dalla derivazione
+
+\begin{align*}
+&\frac{dX(z)}{dz} = -z^{-1} \sum_{n=-\infty}^{\infty} x[n] n z^{-n} \\
+&-z \frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] n z^{-n} \\
+\end{align*}
+
+si nota [fn:: come se qualcuno andasse effettivamente a cercarsi ste
+cose] che la parte destra dell'equazione corrisponde a $\mathcal{Z}\{n
+x[n]\}$, da ciò si ottiene la tesi[fn:: non credo che questo sia il
+simbolo standard per la Z, ma era quello che \LaTeX\ mi lasciava usare
+senza impazzire]
+
+\[
+\mathcal{Z}\{n x[n]\} = -z \frac{dX(z)}{dz}
+\]
+
+** Convoluzione

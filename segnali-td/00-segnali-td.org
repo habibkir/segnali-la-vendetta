@@ -1,0 +1,24 @@
+* Definizione
+Un segnale tempo discreto è definito come una sequenza x[n], queste sequenze possono essere
+	1. Segnali discreti per definizione x[n] = numero di macchine che passano a un tornello autostradale alla n-esima ora di un giorno
+	2. Segnali tempo continui che sono stati discretizzati
+
+il primo caso non sono cazzi nostri
+il secondo caso può essere ottenuto *campionando* un segnale tempo discreto. prendendo un campione di x(t) ogni T di tempo.
+avremo quindi
+\[x[n] = x(nT)\]
+otteniamo questo campionamento motliplicando x(t) per il *pettine di campionamento di Dirac*
+
+qui accade roba
+
+* Trasformata di fourier per segnali tempo discreti
+
+** Formule iniziali
+[...]
+
+si ha quindi una funzione periodicizzata di periodo f_c
+
+la frequenza di Nyquist
+
+*** La saggezza del Deste
+se sto parlando della banda limitata sta parlando di Fourier

@@ -1,0 +1,60 @@
+* Segnali tempo discreto
+
+** Definizione
+Un segnale tempo discreto è una sequenza con indice temporale, puoi
+ottenerlo:
+	* Misurando una quantitià discreta nel tempo (n. di auto/ora
+          a un tornello autostradale
+	* Prendendo un sengale tempo continuo e *campionandolo*
+
+Ai fini di questo corso possiamo ignorare l'esistenza del primo caso
+
+** Campionamento
+
+Voglio mettere un file audio in un computer, quinid ho sto segnale
+x(t) e devo campionarlo, vorrei quindi prendere una sequenza x[0],
+x[1], x[2], x[3]... di valori assunti da questo segnale. Un modo per
+farlo è definire x[n] come
+\begin{align*}
+&x[0] = x[0T] \\
+&x[1] = x[1T] \\
+&x[2] = x[2T] \\
+&x[3] = x[3T] \\
+&x[4] = x[4T] \\
+&x[5] = x[5T] \\
+&... \\
+&x[n] = x[nT] \\
+\end{align*}
+
+con T pari a un intervallo di tempo costante, quindi ogni tot fisso di
+secondi prendiamo un campione,se avessimo per esempio T = 0.2 secondi,
+la formula di sopra diventerebbe: 
+\begin{align*}
+&x[0] = x[0.0s] \\
+&x[1] = x[0.2s] \\
+&x[2] = x[0.4s] \\
+&x[3] = x[0.6s] \\
+&x[4] = x[0.8s] \\
+&x[5] = x[1.0s] \\
+&... \\
+&x[n] = x[(n*0.2)s] \\
+\end{align*}
+
+*** Claude Shannon è un figo della madonna
+
+Un modo molto usato in questo corso per prendere un campione di
+qualcosa è moltiplicarlo per una delta di Dirac, per avere 
+il caso sopra con x[n] = x(nT) vorremo isolare x(nT), possiamo isolare
+x(nT) facendo x(t)\times \delta (t-nT), rocordandoci che la \delta
+estrae il punto dove il suo argomento fa 0 (estrae il punto dove
+esplode).\par 
+
+per avere l'intera sequenza vorremo isolare x(0T), x(1T), x(2T),
+etc... , per fare questo dovremo fare il prodotto con \delta (t-0T),
+\delta (t-1T), \delta (t-2T), etc... , e avere tutti i campioni messi
+insieme. Questo si ottiene moltiplicando per il /pettine di
+campionamento di Dirac/.
+
+\[
+p(t) = \sum_{n=-infty}^{\infty} \delta (t-nT)
+\]

@@ -1,0 +1,168 @@
+% Created 2022-05-26 Thu 12:14
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Definizione}
+\label{sec:org22af5c0}
+\subsection{Formula}
+\label{sec:org8033981}
+\[
+X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}
+\]
+con \(z\) variabile complessa
+
+\subsection{Rapporto con Fourier}
+\label{sec:orga5ca6c9}
+prendiamo la definizione di trasformata z e la definizione di Fourier
+per sequenze
+
+\begin{align*}
+&X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n} \\
+&\overline{X}(F) = \sum_{n=-\infty}^{\infty} x[n] e^{-j2\pi Fn} \\
+\end{align*}
+
+le due formule sono abbastanza simili, entrambe hanno \(\sum x[n]\
+qualcosa^{-n}\), nel caso di Fourier questo qualcosa = \(e^{j2\pi F}\),
+nel caso della z questo può essere qualsiasi cosa, vediamo allora il
+caso particolare in cui z ha la forma \(e^{j2\pi F}\).
+
+\begin{align*}
+  &X(z) \rvert _{z = e^{j2\pi F}} \\
+= &(\sum_{n=-\infty}^{\infty} x[n] z^{-n})\rvert _{z = e^{j2\pi F}} \\
+= & \sum_{n=-\infty}^{\infty} x[n] (e^{j2\pi F})^{-n} \\
+= & \sum_{n=-\infty}^{\infty} x[n] e^{-j2\pi Fn} \\
+= & \overline{X}(F)
+\end{align*}
+
+quindi \(X(z) \rvert _{z = e^{j2\pi F}}\) = \(\overline{X}(F)\), vale a
+dire, la trasformata z equivale alla trasformata di Fourier per
+sequenze nei punti della forma \(z = e^{j2\pi F}\), se lo riscriviamo
+come \(z = 1 \times e^{j2\pi F}\) si può notare un po' meglio che questa
+è una forma generica per indicare punti con modulo 1 e fase
+arbitraria, in umanese vuol dire che è un punto sul cerchio unitario.
+(se \(F\) arbitrario \(\in (-\frac{1}{2},\frac{1}{2})\) allora \(2\pi F\)
+arbitrario \(\in (-\pi\) e \(\pi\)))
+
+\section{Esempii}
+\label{sec:orgf9d06fe}
+
+\subsection{Sequenza finita}
+\label{sec:orgb663558}
+\subsection{Monolatera destra}
+\label{sec:org16c3ed6}
+si prenda la sequenza
+\[
+x[n] = 2^n u[n]
+\]
+allora
+\begin{align*}
+& X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n} \\
+& X(z) = \sum_{n=-\infty}^{\infty} x[n] = 2^n u[n] z^{-n} \\
+\end{align*}
+
+per il gradino
+\begin{align*}
+& X(z) = \sum_{n=0}^{\infty} x[n] = 2^n z^{-n} \\
+& X(z) = \sum_{n=0}^{\infty} x[n] = (2z^{-1})^{-1} \\
+\end{align*}
+
+essendo questa diventata una serie geometrica, si ricordi intanto che
+\[
+f(q) = \sum_{n=0}^{\infty} q^n \Rightarrow
+f(q) = \begin{cases}
+\frac{1}{1-q} & \text{se } \lvert q \rvert < 0 \\
+\text{non converge} & \text{se } \lvert q \rvert \geq 0
+\end{cases}
+\]
+
+\subsection{Monolatera sinistra}
+\label{sec:org1042e7d}
+
+\subsection{Importanza della RoC}
+\label{sec:org08327c5}
+\section{Teoremi}
+\label{sec:org857a110}
+\subsection{Linearità}
+\label{sec:orgd28098e}
+
+\subsection{Ritardo}
+\label{sec:orgfb79288}
+
+\subsection{Inversione temporale}
+\label{sec:org261b1d8}
+
+\subsection{Derivazione in z}
+\label{sec:org3f7cda7}
+
+L'ipotesi è che
+
+\begin{align*}
+&x[n] \iff X(z) \\
+&n x[n] \iff -z \frac{dX(z)}{dz}
+\end{align*}
+
+la dimostrazione è che se
+\[
+X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}
+\]
+
+allora facendo la derivata a entrabmi i lati ottieni
+\[
+\frac{dX(z)}{dz} = \frac{d}{dz}(\sum_{n=-\infty}^{\infty} x[n] z^{-n})
+\]
+
+sia la derivata che la sommatoria sono lineari, quindi puoi fare
+\[
+\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} \frac{d}{dz}(x[n] z^{-n})
+\]
+
+\$x[n] non dipende da \(z\), quindi si porta fuori dalla derivata e
+\begin{align*}
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} \frac{d}{dz}(x[n] z^{-n}) \\
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] \frac{dz^{-n}}{dz} \\
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] -n z^{-n-1} \\
+&\frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] -n z^{-n} z^{-1}
+\end{align*}
+
+\(z^{-1}\) non dipende da n quindi lo portiamo fuori insieme al segno
+\(-\) del \(-n\) introdotto dalla derivazione
+
+\begin{align*}
+&\frac{dX(z)}{dz} = -z^{-1} \sum_{n=-\infty}^{\infty} x[n] n z^{-n} \\
+&-z \frac{dX(z)}{dz} = \sum_{n=-\infty}^{\infty} x[n] n z^{-n} \\
+\end{align*}
+
+si nota \footnote{come se qualcuno andasse effettivamente a cercarsi ste
+cose} che la parte destra dell'equazione corrisponde a \(\mathcal{Z}\{n
+x[n]\}\), da ciò si ottiene la tesi.
+
+\[
+\mathcal{Z}\{n x[n]\} = -z \frac{dX(z)}{dz}
+\]
+
+\subsection{Convoluzione}
+\label{sec:org77917d9}
+\end{document}

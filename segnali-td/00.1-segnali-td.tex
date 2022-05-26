@@ -1,0 +1,94 @@
+% Created 2022-05-19 Thu 12:06
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Segnali tempo discreto}
+\label{sec:org8f3b7ba}
+
+\subsection{Definizione}
+\label{sec:org2428fab}
+Un segnale tempo discreto è una sequenza con indice temporale, puoi
+ottenerlo:
+\begin{itemize}
+\item Misurando una quantitià discreta nel tempo (n. di auto/ora
+a un tornello autostradale
+\item Prendendo un sengale tempo continuo e \textbf{campionandolo}
+\end{itemize}
+
+Ai fini di questo corso possiamo ignorare l'esistenza del primo caso
+
+\subsection{Campionamento}
+\label{sec:org63301ee}
+
+Voglio mettere un file audio in un computer, quinid ho sto segnale
+x(t) e devo campionarlo, vorrei quindi prendere una sequenza x[0],
+x[1], x[2], x[3]\ldots{} di valori assunti da questo segnale. Un modo per
+farlo è definire x[n] come
+\begin{align*}
+&x[0] = x[0T] \\
+&x[1] = x[1T] \\
+&x[2] = x[2T] \\
+&x[3] = x[3T] \\
+&x[4] = x[4T] \\
+&x[5] = x[5T] \\
+&... 
+&x[n] = x[nT] \\
+\end{align*}
+
+con T pari a un intervallo di tempo costante, quindi ogni tot fisso di
+secondi prendiamo un campione,se per esempio T = 0.2 secondi per
+esempio, il che ci darebbe:
+\begin{align*}
+&x[0] = x[0.0s] \\
+&x[1] = x[0.2s] \\
+&x[2] = x[0.4s] \\
+&x[3] = x[0.6s] \\
+&x[4] = x[0.8s] \\
+&x[5] = x[1.0s] \\
+&... 
+&x[n] = x[(n*0.2)s] \\
+\end{align*}
+
+\subsubsection{Claude Shannon è un figo della madonna}
+\label{sec:org834d089}
+
+Un modo molto usato in questo corso per prendere un campione di
+qualcosa è moltiplicarlo per una delta di Dirac, per avere 
+il caso sopra con x[n] = x(nT) vorremo isolare x(nT), possiamo isolare
+x(nT) facendo x(t)\texttimes{} \(\delta\) (t-nT), rocordandoci che la \(\delta\)
+estrae il punto dove il suo argomento fa 0 (estrae il punto dove
+esplode).\par 
+
+per avere l'intera sequenza vorremo isolare x(0T), x(1T), x(2T),
+etc\ldots{} , per fare questo dovremo fare il prodotto con \(\delta\) (t-0T),
+\(\delta\) (t-1T), \(\delta\) (t-2T), etc\ldots{} , e avere tutti i campioni messi
+insieme. Questo si ottiene moltiplicando per il \emph{pettine di
+campionamento di Dirac}.
+
+\[
+p(t) = \sum_{n=-infty}^{\infty} \delta (t-nT)
+\]
+\end{document}
