@@ -1,0 +1,172 @@
+% Created 2022-06-03 Fri 12:48
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Definizione}
+\label{sec:org6b80e5d}
+è un campionamento della trasformata di fourier per sequenze
+
+se \(x[n]\) fosse infinita prenderemmo campioni infinitamente fitti, non
+propio un'ottima idea
+data la trasformata per sequenze, \(X(F)\) è periodica, dato che è un
+campionamento, \(X[k]\) è periodica
+
+\[
+X[k] = X(F) \rvert _{F=\frac{k}{N}} \]
+
+la DFT si applica a sequenze periodiche o di durata finita.
+\[
+x[n] \Rightarrow X(F) = \sum_{n = -\infty}^{\infty}
+x[n] e^{-j2\pi Fn} \]
+
+visto che il segnale è finito, per quanto detto sopra
+\begin{align*}
+&x[n] \Rightarrow X(F) = \sum_{n = 0}^{N-1} x[n] e^{-j2\pi Fn} \\
+&X[k] = X(F) \rvert _{F=\frac{k}{N}}
+= \sum_{n = 0}^{N-1} x[n] e^{-j2\pi \frac{k}{N}n}
+\end{align*}
+
+\section{C'è anche l'antitrasformata}
+\label{sec:org238b8f1}
+
+\subsection{Quest'altra sequenza che useremo poi}
+\label{sec:org6ff8113}
+
+Iniziamo enunciando sto risultato parziale, prendetela per buona, tra
+un paio di sezioni si capisce perché dovrebbe avere senso\footnote{nei
+modi e nei limiti delle capacità esplicative dell' Argetnti}
+introdurre questa cosa.
+si definisca la serie
+\[
+\Phi [m] = \sum_{k = 0}^{N-1} e^{-j2\pi \frac{k}{N}m}
+\]
+
+si dimostra che
+\[
+\Phi[m] = \begin{cases}
+N & \text{ se } m = 0, m = \pm N, m = \pm 2N... \\
+0 & \text{ altrimenti }
+\end{cases}
+\]
+
+mi faceva fatica scrivere i calcoli in \LaTeX\ in tempo reale, vedi gli
+appunti del deste.
+c'è qualche \(e^{j2\pi \times \text{intero}} = 1\), poi fa una serie
+geometrica parziale
+
+\subsection{Formula dell'antitrasformata}
+\label{sec:org1153d81}
+
+Senza provare a far capire perché si definisce in questo modo, ecco la
+formula dell'antitrasformata, per spiegare senza
+spiegare\footnote{cit. Marco de Stefano}
+
+\[ x[n] = \frac{1}{N} \sum_{k=0}^{N-1} X[k] e^{+j2\pi \frac{k}{N}n} \]
+
+facendo qualche sostituzione del cazzo possiamo dimostrare che
+funziona
+
+una sottospecie di processo per dimostrare ciò è sotto riportato,
+partendo da
+\[ x[n] = \frac{1}{N} \sum_{k=0}^{N-1} X[k] e{+j2\pi \frac{k}{N}n} \]
+
+riscriviamo \(X[k]\) come trasformata di \(x[n]\), visto che la lettera
+\(n\) è già occupata useremo la lettera \(r\) per la sommatoria interna
+\[ x[n] = \frac{1}{N} \sum_{k=0}^{N-1}
+(\sum_{r = 0}^{N-1} x[r] e^{-j 2\pi \frac{k}{N}r})
+e^{+j2\pi \frac{k}{N}n} \]
+
+poi succede un miracolo, e torna
+\[ x[n] \]
+
+
+\section{Periodicità}
+\label{sec:org2a51363}
+
+\subsection{Anche x[n] è periodica}
+\label{sec:org67d464e}
+se metti \(x[n + N]\) nella formula di \(x[n]\) ottenuta a partire da
+\(X[k]\) ti ritorna \(x[n]\), quindi è periodica, se la cosa magari ti interessava.
+
+
+\section{Propietà della trasformata}
+\label{sec:org42dc8d2}
+
+\subsection{Linearità}
+\label{sec:org381e902}
+
+Grazialcazzo
+
+\subsection{Teorema del ritardo}
+\label{sec:org464bb9a}
+
+Visto che stiamo lavorando con sequenze periodiche al ritardo \$x[n-n\textsubscript{0}]
+corrisponderà un \textit{ritardo deluxe} che viene definito come
+\textit{traslazione circolare}.
+
+Tanto la tesi è la stessa
+\begin{align*}
+& x[n] \iff X[k] \\
+& x[n-n_0] \iff X[n] e^{-j2\pi \frac{k}{N} n_0}
+\end{align*}
+
+\subsection{Traslazione in frequenza}
+\label{sec:org8610a2c}
+
+Qui non prova neanche a dimostrarla, ecco la tesi, au revoir
+\[ x[n] e^{j\frac{2\pi k_0}{N}n} \iff X[k - k_0] \]
+
+\subsection{Inversione temporale}
+\label{sec:org87abc05}
+
+abbiamo \(y[n] = x[-n]\)
+\begin{align*}
+& x[n] \iff X[k] \\
+& y[n] \iff \text{?}
+\end{align*}
+
+qualcosa, mi sono perso mentre lo stavate scrivendo
+
+\subsection{Teorema di parceval}
+\label{sec:orgce559cb}
+
+facendo il solito cazzo di risultato intermedio
+
+\[
+\sum_{n=0}^{N-1} x[n]y^*[n] =
+\frac{1}{N} \sum_{k=0}^{N-1}X[k]Y^*[k]
+\]
+
+metti \(y[n] = x[n]\)
+
+
+\begin{align*}
+& \sum_{n=0}^{N-1} x[n]x^*[n] =
+\frac{1}{N} \sum_{k=0}^{N-1}X[k]X^*[k] \\
+& \sum_{n=0}^{N-1} \lvert x[n] \rvert ^2 =
+\frac{1}{N} \sum_{k=0}^{N-1} \lvert X[k] \rvert ^2 \\
+\end{align*}
+\end{document}

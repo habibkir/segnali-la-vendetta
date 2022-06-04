@@ -1,0 +1,208 @@
+% Created 2022-05-30 Mon 11:21
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Dasara Shullani Ph.D}
+\date{\today}
+\title{Needs more jpeg, Argenti edition}
+\hypersetup{
+ pdfauthor={Dasara Shullani Ph.D},
+ pdftitle={Needs more jpeg, Argenti edition},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Signal processing appliced to Image Forensics}
+\label{sec:orgc653bf9}
+\begin{itemize}
+\item Image forensics usata per capire se immagine è stata modificata.
+\item Voilà, funziona la penna
+\item Ci stanno mettendo un po' a iniziare, scusate il disturbo
+\item Openboard permette di importare pdf, questa è un'ottima notizia
+\item Il professore di automatica lo usa per le slide
+\end{itemize}
+\section{Ok, comincia}
+\label{sec:org1e2feb7}
+distinzione di segnali 1D, 2D, 3D
+
+abbiamo visto i segnali 1D, ad esempio un segnale audio
+\begin{itemize}
+\item 1D, tipo audio
+\item 2D, tipo foto
+\item 3D, tipo video
+\end{itemize}
+
+Analisi seganli 2D per capire se un'immagine è stata modificata
+Questa è una rappresentazione di un soggetto reale, la luce colpisce
+un oggetto, la luce viene ricevuta da un sensore, questo segnale
+luminoso viene discretizzato\par
+
+Componente principale il sensore, casi principali
+\begin{itemize}
+\item CCD, light to photodiode
+\item CMOS, light to photodiode ampilfier pair
+\end{itemize}
+
+Come si usa CFA per dare colore a immagine
+(CFA coso verde verde rosso blu, chiedi a Captain Disillusion)
+più verde perchè la banda del verde ricevuta meglio dai nostri occhi\par
+
+campioni il rosso nei punti in cui la pattern è rossa, il resto del
+rosso viene interpolato\par
+
+Il passaggio successivo è un processo di compressione, viene
+trasformato in bit (encoder) che usi per rivederla (decoder)
+
+Algoritmi
+\begin{itemize}
+\item \textbf{Lossy}: immagine ricorstuita non identica (es. jpeg)
+\item \textbf{Lossless}: decodifica rende immagine/ segnale identica (pensa
+a un file .zip)
+\end{itemize}
+
+\section{Jpeg}
+\label{sec:org8639e5c}
+
+\subsection{Encoder}
+\label{sec:org551354e}
+
+\begin{itemize}
+\item Trasformata DCT
+\item Quantizzatore
+\item Roba che mi sono perso
+\end{itemize}
+
+\subsection{Trasformata DCT}
+\label{sec:org1ce04d8}
+
+Discrete Cosine Transform, decompone un segnale attraverso le sue
+armoniche coseno, somma delle armoniche pesate a dovere danno il
+segnale originale.
+
+In ambito immagine come si fa? Dividiamo in blocchi 8x8 non
+sovrapposti, e fai la dft per tutti i blocchi
+(chunk di un mondo minecraft, \textpm{})
+
+\begin{itemize}
+\item Basse frequenze, descrivono caratteristiche grossolane dell'immagine
+\item Medie frequenze, un po' più fine
+\item Alte frequenze, molto fini
+\end{itemize}
+
+Voglio un'immagine fedele alla realtà, ma che occupi il meno spazio
+possibile
+
+\subsection{Quantizzatore}
+\label{sec:orgfe8a205}
+
+La quantizzazione rimuove dettagli imprecettibili
+lo stato di quantizzazine associa a ogni blocco 8x8 una matrice di
+luminanza e crominanza (luminanza = intensità, crominanza =
+colore), questo è il passo sostanziale di rimozione di dettagli\par
+
+\subsubsection{I would like to interject for a moment}
+\label{sec:org1aed204}
+
+quelli sono uguali ai passi di quantizzazine, hai un passo \(\delta\) più
+fine per i dettagli, in alte frequenze i passi sono più alti, in bassa
+frequenza i passi sono minore, usare passi diversi permette di avere
+più valori nulli, ce n'è uno per ogni valore della matrice
+
+(se non si capisce, non ho capito un cazzo)
+
+
+\subsection{Entropy coding}
+\label{sec:orgfaa7ebe}
+Claude shannon approva\par
+
+Rappresentare nella maniera più efficiente possbilie, dire 10 0 e 1,
+andiamo a fare codifica differenziale, poi boh, poi bah
+
+\subsubsection{Primo passo, quantizzazione}
+\label{sec:orgac224a0}
+
+Quella cosa con l'albero per comprimere, robe comuni vanno a meno bit,
+robe rare hanno più bit.
+
+Huffman lookup table, quella cosa con l'albero
+
+Stiamo comprimendo il comprimibile, per quanto possbile.
+
+\section{Image forensics}
+\label{sec:orgad03c9a}
+
+Quest'immagine è stata manipolata?
+
+le due macroaree sono
+\begin{itemize}
+\item St'immagine è stata modificata?
+\item Da dove cazzo è venuta st'immagine? Da quale dispositivo?
+\end{itemize}
+
+\subsection{Verfica autenticità}
+\label{sec:org93e11a4}
+es. Jpeg non si allinea nella grigla 8x8, we call this a misalignment
+
+ci sono due casi
+\begin{itemize}
+\item Doppio jpeg non allineato
+\item Doppio jpeg allineato
+\end{itemize}
+
+\subsection{Demosaicatura}
+\label{sec:org7ec94da}
+molto visibile in un'immagine
+se non si nota demosaicatura allora l'immagine potrebbe essere stata
+modificata
+
+\subsection{Identificazione sorgente}
+\label{sec:org183c46d}
+Identificazione del dispositivo che ha prodotto l'immagine
+
+si studia l'impronta dell'immagine
+
+un'immagine molto scura presenta rumore nelle parti scure
+dell'immagine ad esempio, pensa a tutte le tue foto scacie di
+tramonti.
+
+vi sono rumori
+\begin{itemize}
+\item Shot noise
+\item Pattern noise
+\end{itemize}
+
+Photo responsive Non uniformity noise
+come, in fase di produzoine, si presentano artefatti di produzione.
+
+Rumore estremamente presente in immagine naturale, e sopravvive molto
+bene al processing.
+
+Come si può usare questo rumore per identificare il sensore che ha
+prodotto quest'immagine.
+
+Il rumore è estremamente dipendente dall'immagine, viene ottenuto
+facendo un denoising dell'immagine, e trovando la differenza tra
+denoised e noised.
+
+abbiamo bisogno di parecchie immagini prima di avere una idea completa
+del rumore del sensore, meno immagini se hai tanti muri bianchi.
+
+si testano i rumori in senso di correlazione col rumore nella foto per
+vedere di capire da chi cazzo è arrivato sto rumore
+\end{document}

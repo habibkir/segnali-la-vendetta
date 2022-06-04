@@ -1,0 +1,87 @@
+% Created 2022-06-02 Thu 17:13
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{mathcal}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+
+\section{Proprietà dei sistemi}
+\label{sec:orge8038e5}
+\subsection{Lineare}
+\label{sec:org6bcf15d}
+\subsection{Tempo invarianza}
+\label{sec:org7811ddb}
+\subsection{Senza memoria}
+\label{sec:org9483087}
+\subsection{Stabile}
+\label{sec:orgeb76735}
+Si definisce stabile un sistema con stabilità \textbf{BIBO} (Bouded Input
+Bouded Output), vale a dire un sistema \(y[n] = \mathcal{T}\{x[n]\}\)
+tale che \(\forall\) \(x[n]\) limitato \(\Rightarrow\) \(y[n]\) è limitato, si
+dimostra che un sistema LTI è BIBO stabile se e solo se h[n] è
+assolutamente sommabile, quindi 
+
+\[
+\mathcal{T}\{\dot\} \text{ è BIBO } \iff
+\sum_{n=-\infty}^{\infty} \lvert h[n] \rvert < \infty
+\]
+
+dimostrazoine:
+
+Avanti : \(\sum \lvert h[n] \rvert < \infty \Rightarrow\) BIBO
+\begin{verbatim}
+Errore: Dimostrazione non ancora inserita, siete pregati di andare a fanculo
+\end{verbatim}
+
+Indietro : BIBO \(\Rightarrow \sum \lvert h[n] \rvert < \infty\)
+La dimostrazoine è per assurdo, avrà quindi la forma
+\[
+\Rightarrow \sum \lvert h[n] \rvert = \infty \Rightarrow
+\text{\textbf{NON} BIBO}
+\]
+
+iniziamo da questa definizione del cazzo:
+\[
+y[n] = \sum_{k=-\infty}^{\infty} h[k] x[n-k]
+\]
+
+vogliamo un input \(x[n]\) che faccia "risonare" \(h[n]\) e che la faccia
+esplodere malamente, per facilità di non dover scrivere \(n\) in tutte
+le formule facciamo che vogliamo farlo esplodere in \(n=0\).
+
+per far esplodere \(h[n]\) vediamo quali caratteristiche di \(h[n]\)
+rendono buoni esplodsivi
+
+sappiamo che \(h[n]\) non è assolutamente sommabile (ed è l'unica cosa
+che sappiamo di \(h[n]\) da ste ipotesi quindi non abbiamo molta altre
+scelta)
+
+\subsection{Causale}
+\label{sec:orge635064}
+
+Un sistema causale rispetta il principio del non viaggiare nel tempo,
+il valore di \(y[n]\) non può quindi dipendere da valori di \(x[n]\) quali
+\$x[n+1], x[n+2], x[n+3]\ldots{}\$, v
+\end{document}
