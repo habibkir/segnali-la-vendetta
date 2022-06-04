@@ -1,0 +1,88 @@
+#+LATEX_HEADER: \usepackage{epigraph}
+#+TITLE: Gli stessi quattro esercizi
+
+\epigraph{Come potete vedere la procedura è del tutto
+sistematica}{Battistelli G.}
+
+* Quantizzatore
+** Solita traccia
+Abbiamo un segnale $x(t)$ fatto da $x_1 (t)$, $x_2 (t)$, e a volte
+anche $x_3 (t)$, $x_{boh} (t)$ è fatto da $s_{boh} (t)$ (segnale
+utile) e $r_{boh} (t)$ (rumore). Hai le forme dei segnali $s_{boh}
+(t)$ e hai le SNR $\frac{P_{s_{boh}}}{P_{r_{boh}}}$.\par
+
+Vogliamo sapere
+	* Il guadagno necessario per farlo passare per un
+          quantizzatore di dinamica $(-1, 1)$
+	* Il rapporto segnale-rumore all'ingresso del quantizzaotore
+	* Il rapporto segnale-rumore all'uscita del quantizzatore,
+          oppure il numero di bit necessari per avere un rapporto
+          segnale-rumore maggiore di $SNR_{in} - 0.5dB$
+
+** Soliti passi
+I sottosegnali $s_{boh} (t)$ hanno 2 possibili forme
+	* Un seno/coseno
+	* Un segnale gaussiamo
+Vediamo come gestirli per i passi dell'esercizio descritti sopra
+
+*** Guadagno necessario per far passare
+Dobbiamo sapere quali sono i valori massimi/ minimi assumibili dal
+segnale in modo da far rientrare questi nella dinamica del
+quantizzatore (con dinamica di un quantizzatore si intende l'insieme
+dei valori con cui questo può lavorare senza fare errori indecenti).
+
+Un coseno, mettiamo nella forma $A \cos (2\pi ft)$ ha dinamica $(-A,
+A)$ (con dinamica di un segnale si intende l'insieme dei valori che
+possono essere assunti da questo).
+
+Un segnale gaussiano viene campionato solo nelle fasce da $-4\sigma$ e
+$4\sigma$, ai fini di questi esercizii avrà quidni dinamica
+$(-4\sigma, 4\sigma)$
+
+Questo segnale con la somma di tutti avrà minimo possibile pari alla
+somma di tutti i minimi delle sue parti, e massimo assoluto pari alla
+somma di tutti i massimi delle sue parti
+
+Prendiamo per esempio il segnale
+\[ segnale \]
+
+le componenti avranno dinamiche
+\[ dinamiche \]
+
+sommando i minimi e i massimi di queste avremo la dinamica del segnale
+pari a
+\[ dinamica \]
+
+per scalarla a $(-1, 1)$ sarà quindi necessario...
+
+*** SNR all'ingresso del quantizzatore
+la SNR (signal to noise ratio) è definita come il rapporto tra le
+potenze del segnale e del rumore: dato il solito cazzo di
+\[x_{boh} = s_{boh} + r_{boh}\]
+la $SNR_{boh}$ sarà definita come
+\[SNR_{boh} = \frac{P_{s_{boh}}}{P_{r_{boh}}}\]
+
+La SNR all'ingresso del quantizzatore sarà
+
+Come abbiamo detto prima i due input sono che ci interessano sono
+coseno e gaussiana nel primo caso la potenza del segnale è $frac{1}{2}
+\times$ l'ampiezza, per un generico $A \cos(2\pi f t + \phi)$ la
+potenza sarà quindi
+\[P = \frac{A^2}{2}\] 
+Per il segnale gaussiano la potenza sarà pari alla varianza $\sigma
+^2$, questa viene data con il segnale.
+
+
+* Zeta
+** Le stesse 3 sequenze
+
+* LTI
+** Dalla Z alle differenze finite
+** Dalle differenze finite alla Z
+
+* DFT
+
+
+* Argenti patterns
+** Sinusoidi
+** Teoremi miracolati e come abusarli
