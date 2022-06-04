@@ -1,0 +1,62 @@
+#+LATEX_HEADER: \usepackage{
+* Segnali TD
+	* Campionamento
+	* Interpolazione cardinale(?)
+
+* Quantizzazione
+	* Ipotesi del rumore, bla bla bla è bianco
+	* Potenza dell'errore, bla bla bla $\frac{\Delta ^2}{2}$
+
+* Trasformate
+** Fourier per sequenze
+	* Linearità
+	* Ritardo
+	* Modulazione
+	* Coniugazione
+	* Inversione temporale
+	* Convoluzione
+	* Prodotto
+	* Parseval
+	* Incremento
+	* Definizione processo WSS
+	* Cazzatine su densità spettrale di potenza
+** Trasformata Z
+	* Linearità
+	* Ritardo
+	* $y[n] = a^n x[n]$
+	* Coniugazione
+	* Inversione temporale
+	* Derivazione
+	* Convoluzione
+	* RoC sequenza limitata
+	* RoC di monolatere destre, sinistre
+	* RoC bilatera
+** DFT
+	* Linearità
+	* $\Phi [m]$
+	* Ricordati che è circolare
+	* Ritardo
+	* Modulazione
+	* Inversione temporale
+	* Coniugazione
+	* Parseval
+
+* Esempii di quesiti chiesti
+	* Proprietà processo aleatorio per essere stazionario
+	* Rapporto tra fourier di $y[n]$, sequenza somma di $x[n]$, e
+          $x[n]$ stessa
+	* Scrivi espressione di funzione ottenuta con interpolazione a
+          mantenimento di $x[n]$
+	* Simmetria di Fourier per le sequenze reali
+	* Data una quantizzazione uniforme, relazione tra $x[n]$ e
+          $\hat{x[n]}$
+	* Enunciare ipotesi assunte per errore di quantizzazione
+	* [DATA EXPUNGED]
+
+* Esempii di dimostrazioni chiesti
+	* Enunciare il teorema del prodotto di Fourier per sequenze
+	* Dimostrazione relazione tra Fourier di $x(t)$ e Fourier di
+          $x[n]$
+	* Dimostrare che dall'antitrasformata discreta discende la
+          trasformata discreta di Fourier
+	* Enunciare il teorema della convoluzione della DFT

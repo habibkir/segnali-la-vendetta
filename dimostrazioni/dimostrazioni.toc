@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Segnali TD}{1}{section.1}%
+\contentsline {section}{\numberline {2}Quantizzazione}{1}{section.2}%
+\contentsline {section}{\numberline {3}Trasformate}{1}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Fourier per sequenze}{1}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Trasformata Z}{2}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}DFT}{2}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Esempii di quesiti chiesti}{3}{section.4}%
+\contentsline {section}{\numberline {5}Esempii di dimostrazioni chiesti}{3}{section.5}%

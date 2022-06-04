@@ -1,0 +1,111 @@
+% Created 2022-06-04 Sat 13:03
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Segnali TD}
+\label{sec:org2399046}
+\begin{itemize}
+\item Campionamento
+\item Interpolazione cardinale(?)
+\end{itemize}
+
+\section{Quantizzazione}
+\label{sec:org4f0a955}
+\begin{itemize}
+\item Ipotesi del rumore, bla bla bla è bianco
+\item Potenza dell'errore, bla bla bla \(\frac{\Delta ^2}{2}\)
+\end{itemize}
+
+\section{Trasformate}
+\label{sec:orgc4070cb}
+\subsection{Fourier per sequenze}
+\label{sec:orgdc31610}
+\begin{itemize}
+\item Linearità
+\item Ritardo
+\item Modulazione
+\item Coniugazione
+\item Inversione temporale
+\item Convoluzione
+\item Prodotto
+\item Parseval
+\item Incremento
+\item Definizione processo WSS
+\item Cazzatine su densità spettrale di potenza
+\end{itemize}
+\subsection{Trasformata Z}
+\label{sec:orgbd345cf}
+\begin{itemize}
+\item Linearità
+\item Ritardo
+\item \(y[n] = a^n x[n]\)
+\item Coniugazione
+\item Inversione temporale
+\item Derivazione
+\item Convoluzione
+\item RoC sequenza limitata
+\item RoC di monolatere destre, sinistre
+\item RoC bilatera
+\end{itemize}
+\subsection{DFT}
+\label{sec:orgba6c988}
+\begin{itemize}
+\item Linearità
+\item \(\Phi [m]\)
+\item Ricordati che è circolare
+\item Ritardo
+\item Modulazione
+\item Inversione temporale
+\item Coniugazione
+\item Parseval
+\end{itemize}
+
+\section{Esempii di quesiti chiesti}
+\label{sec:org1291aa3}
+\begin{itemize}
+\item Proprietà processo aleatorio per essere stazionario
+\item Rapporto tra fourier di \(y[n]\), sequenza somma di \(x[n]\), e
+\(x[n]\) stessa
+\item Scrivi espressione di funzione ottenuta con interpolazione a
+mantenimento di \(x[n]\)
+\item Simmetria di Fourier per le sequenze reali
+\item Data una quantizzazione uniforme, relazione tra \(x[n]\) e
+\(\hat{x[n]}\)
+\item Enunciare ipotesi assunte per errore di quantizzazione
+\item\relax [DATA EXPUNGED]
+\end{itemize}
+
+\section{Esempii di dimostrazioni chiesti}
+\label{sec:org4090b56}
+\begin{itemize}
+\item Enunciare il teorema del prodotto di Fourier per sequenze
+\item Dimostrazione relazione tra Fourier di \(x(t)\) e Fourier di
+\(x[n]\)
+\item Dimostrare che dall'antitrasformata discreta discende la
+trasformata discreta di Fourier
+\item Enunciare il teorema della convoluzione della DFT
+\end{itemize}
+\end{document}
